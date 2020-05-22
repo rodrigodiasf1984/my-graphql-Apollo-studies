@@ -1,0 +1,15 @@
+{
+  "name": "books-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Rodrigo Figueiredo",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "graphql": "^15.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
