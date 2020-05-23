@@ -10,7 +10,7 @@ const{
   GraphQLID, 
   GraphQLInt,
   GraphQLList,
-  GraphQLNonNull
+  GraphQLNonNull,  
 }= graphql;
 
 

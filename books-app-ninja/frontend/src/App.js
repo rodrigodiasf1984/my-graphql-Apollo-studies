@@ -1,6 +1,7 @@
 import React from 'react';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from '@apollo/react-hooks'
+import cors from 'cors';
 
 //components
 import BookList from './components/BookList/BookList';
