@@ -1,5 +1,7 @@
 const graphql = require('graphql');
 const _= require('lodash');
+const Book =  require('../models/book');
+const Author =  require('../models/author');
 
 const{ 
   GraphQLObjectType, 
@@ -10,20 +12,7 @@ const{
   GraphQLList
 }= graphql;
 
-var books = [
-  {name: 'Planet of Apes', genre: 'Fiction', id:'1', authorId:'2'},
-  {name: 'Foundation', genre: 'Fiction', id:'2', authorId:'1'},
-  {name: 'The Silmarillion', genre: 'Fantasy', id:'3', authorId:'3'},
-  {name: 'The lord of the rings 1', genre: 'Fantasy', id:'3', authorId:'3'},
-  {name: 'The lord of the rings 2', genre: 'Fantasy', id:'3', authorId:'3'},
-  {name: 'The lord of the rings 3', genre: 'Fantasy', id:'3', authorId:'3'},
-];
 
-var authors = [
-  {name: 'Isaac Asimov', age: 72, id:'1'},
-  {name: 'Pierre Boulle', age: 81, id:'2'},
-  {name: 'J. R. R. Tolkien', age: 81, id:'3'},
-];
 
 const BookType = new GraphQLObjectType({
   name:'Book',
@@ -35,7 +24,7 @@ const BookType = new GraphQLObjectType({
       type:AuthorType,
       resolve(parent, args){
         console.log(parent);
-        return _.find(authors, {id:parent.authorId});
+        //return _.find(authors, {id:parent.authorId});
       }
     }
   })
@@ -50,7 +39,7 @@ const AuthorType = new GraphQLObjectType({
     books:{
       type: new GraphQLList(BookType),
       resolve(parent, args){
-        return _.filter(books, {authorId: parent.id})
+        //return _.filter(books, {authorId: parent.id})
       }
     }
   })
@@ -67,26 +56,26 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args){
         // code to get data from db / other source
         console.log(typeof(args.id))
-        return _.find(books,{id:args.id});
+        //return _.find(books,{id:args.id});
       }
     },    
     author:{
       type: AuthorType,
       args:{id:{type:GraphQLID}},
       resolve(parent, args){
-        return _.find(authors,{id:args.id} );
+        //return _.find(authors,{id:args.id} );
       }
     },
     books:{
       type: new GraphQLList(BookType),
       resolve(parent, args){
-        return books;
+        //return books;
       }
     },
     authors:{
       type: new GraphQLList(AuthorType),
       resolve(parent, args){
-        return authors;
+        //return authors;
       }
     }
   }
