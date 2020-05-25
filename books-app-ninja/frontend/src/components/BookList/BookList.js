@@ -6,6 +6,8 @@ const GET_BOOKS = gql`
   {
     books{
       name
+      genre
+      imageUrl
       id
     }
   }
@@ -16,16 +18,15 @@ function BookList() {
 
   if(error) return 'Error, deu ruim demais.'; 
   return (
-    <div>
-      <ul id="book-list">
-        <li>Book name</li>
-      </ul>
-
+    <div>      
       {loading ? "Carregando..." : (
         <div >
           <ul>
-            {data.books.map(({ id, name, genre }) => (
-            <li key={id}>name</li>
+            {data.books.map(({ id, name, genre, imageUrl }) => (
+            <li key={id}>
+              Book name: {name} Book genre: {genre}
+              {/* <img src={imageUrl}/> */}
+            </li>
             ))}
           </ul>
         </div>
